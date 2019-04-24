@@ -85,6 +85,10 @@ and H1.ID=F1.ID1 and H2.ID=F2.ID1 and H3.ID=F1.ID2
 -- Find the difference between the number of students in the school and the number of different first names. 
 select distinct (select count(distinct ID) from Highschooler)-(select count(distinct name) from Highschooler)
 from Highschooler
+                                                   
+--or
+                                                   
+select count(ID)-count(distinct name) from Highschooler
               
 -- Question 9
 -- Find the name and grade of all students who are liked by more than one other student. 
