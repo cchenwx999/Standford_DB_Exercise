@@ -1,5 +1,5 @@
 # Standford_DB_Exercise
-This includes materials, exercises and solutions used in the [DBclass](https://class2go.stanford.edu/db/Winter2013) offered by Stanford.
+This includes materials, exercises and solutions used in the [DBclass](https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/course/#i4x://DB/SQL/chapter/ch-sql) offered by Stanford.
 
 This includes exercises for sql in the classes. The first line in all examples is used by the dbext vim plugin to correctly connect to the right database.
 
