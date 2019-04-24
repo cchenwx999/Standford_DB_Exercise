@@ -62,8 +62,8 @@ from
 (
 (select L1.ID1 as ID1, L1.ID2 as ID2 from Likes L1 where L1.ID1 not in 
       (select Likes.ID1 from Likes join Friend on Likes.ID1=Friend.ID1 and Likes.ID2=Friend.ID2) ) T 
-join (select F1.ID1 as ID1,F1.ID2,F2.ID2 as FID2 from Friend F1 join Friend F2 on F1.ID2=F2.ID1 and F1.ID1<>F2.ID2) S 
-on T.ID2=S.ID1 and T.ID1 <> S.ID2 and S.FID2=T.ID1
+join (select F1.ID1 as ID1,F1.ID2,F2.ID2 as FID2 from Friend F1 join Friend F2 on F1.ID2=F2.ID1) S 
+on T.ID2=S.ID1 and S.FID2=T.ID1
 )
 join Highschooler H1 on H1.ID = T.ID1
 )
