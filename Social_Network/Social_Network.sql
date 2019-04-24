@@ -71,6 +71,16 @@ join Highschooler H2 on H2.ID = T.ID2
 )
 join Highschooler H3 on H3.ID = S.ID2
 
+--or
+              
+select H1.name, H1.grade,H2.name, H2.grade,H3.name, H3.grade
+From Highschooler H1, Highschooler H2,Highschooler H3,Friend F1, Friend F2, 
+(select ID1,ID2 from Likes where LIKES.ID2 not in (select F.ID2 from 
+Friend F where F.ID1=LIKES.ID1)) as L1
+on F1.ID1=L1.ID1 and F1.ID2=F2.ID2 and F2.ID1=L1.ID2 
+and H1.ID=F1.ID1 and H2.ID=F2.ID1 and H3.ID=F1.ID2
+  
+
 -- Question 8
 -- Find the difference between the number of students in the school and the number of different first names. 
 select distinct (select count(distinct ID) from Highschooler)-(select count(distinct name) from Highschooler)
