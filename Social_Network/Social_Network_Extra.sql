@@ -21,11 +21,28 @@ where ID not in
               ) T 
        )
 
+-- or
+select name, grade
+from Highschooler, (
+  select ID1 from Friend
+  except
+  -- students have friends with same grade
+  select distinct Friend.ID1
+  from Friend, Highschooler H1, Highschooler H2
+  where Friend.ID1 = H1.ID and Friend.ID2 = H2.ID
+  and H1.grade = H2.grade
+) as Sample
+where Highschooler.ID = Sample.ID1
+
 -- Question 3
 -- What is the average number of friends per student? (Your result should be just one number.) 
 select avg(T.CID)
 from (select ID, count(ID) as CID from Highschooler H join Friend F on H.ID=F.ID1 group by ID) T
 # the Highschooler join with Friend prohibits the double count in the Friend table
+
+--or
+select SUM(NUM)/ROUND(COUNT(NUM),1)
+from (select count(id2) as num from friend group by id1) 
 
 -- Question 4
 -- Find the number of students who are either friends with Cassandra or are friends of friends of Cassandra. 
