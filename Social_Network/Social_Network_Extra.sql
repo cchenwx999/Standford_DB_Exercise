@@ -38,7 +38,7 @@ where Highschooler.ID = Sample.ID1
 -- What is the average number of friends per student? (Your result should be just one number.) 
 select avg(T.CID)
 from (select ID, count(ID) as CID from Highschooler H join Friend F on H.ID=F.ID1 group by ID) T
-# the Highschooler join with Friend prohibits the double count in the Friend table
+# the Highschooler join with Friend seems redundant
 
 --or
 select SUM(NUM)/ROUND(COUNT(NUM),1)
