@@ -44,6 +44,10 @@ from (select ID, count(ID) as CID from Highschooler H join Friend F on H.ID=F.ID
 select SUM(NUM)/ROUND(COUNT(NUM),1)
 from (select count(id2) as num from friend group by id1) 
 
+-- or use average function
+select avg(T.num)
+from (select count(id2) as num from friend group by id1) T
+
 -- Question 4
 -- Find the number of students who are either friends with Cassandra or are friends of friends of Cassandra. 
 -- Do not count Cassandra, even though technically she is a friend of a friend.
